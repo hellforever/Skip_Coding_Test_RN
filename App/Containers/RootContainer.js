@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
-import { View, StatusBar } from 'react-native'
-import ReduxNavigation from '../Navigation/ReduxNavigation'
+import { View, StatusBar, Platform } from 'react-native'
 import { connect } from 'react-redux'
 import StartupActions from '../Redux/StartupRedux'
+import { Divider } from 'react-native-elements'
 
 // Styles
 import styles from './Styles/RootContainerStyles'
+import RestaurantList from './RestaurantList'
+import SearchBarContainer from './SearchBarContainer'
 
 class RootContainer extends Component {
   componentDidMount () {
@@ -16,7 +18,9 @@ class RootContainer extends Component {
     return (
       <View style={styles.applicationView}>
         <StatusBar barStyle='light-content' />
-        <ReduxNavigation />
+        <Divider style={{ height: (Platform.OS === 'ios') ? 30 : 0 }} />
+        <SearchBarContainer />
+        <RestaurantList />
       </View>
     )
   }

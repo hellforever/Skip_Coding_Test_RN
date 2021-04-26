@@ -1,11 +1,10 @@
 import { call, put } from 'redux-saga/effects'
-import { GithubSelectors } from '../Redux/GithubRedux'
 import RestaurantListActions from '../Redux/RestaurantListRedux'
 
-export const selectAvatar = GithubSelectors.selectAvatar
+export function * getRestaurantList (api, action) {
+  const { data } = action
 
-export function * startup (api, action) {
-  const response = yield call(api.getRestaurantList, 'ec4m')
+  const response = yield call(api.getRestaurantList, data)
   if (response.ok) {
     yield put(RestaurantListActions.restaurantListSuccess(response.data))
   } else {

@@ -10,6 +10,8 @@ target 'SkipTest2' do
 
   pod 'RNGestureHandler', :path => '../node_modules/react-native-gesture-handler'
 
+  pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
+
   target 'SkipTest2Tests' do
     inherit! :complete
     # Pods for testing
@@ -19,7 +21,7 @@ target 'SkipTest2' do
   #
   # Note that if you have use_frameworks! enabled, Flipper will not work and
   # you should disable these next few lines.
-  use_flipper!
+  use_flipper!({ 'Flipper' => '0.74.0' })
   post_install do |installer|
     flipper_post_install(installer)
   end
